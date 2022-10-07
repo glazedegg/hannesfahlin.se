@@ -30,6 +30,7 @@ body {
 .form_button,
 .regi_title {
     font: 500 1rem 'Quicksand', sans-serif;
+    font-weight: lighter;
 }
 
 .form > *:first-child {
@@ -56,7 +57,7 @@ body {
 }
 .form_button {
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem;
     font-weight: bolder;
     font-size: 1.1rem;
     color: #ffffff;
@@ -67,8 +68,18 @@ body {
     background: var(--color-primary);
 }
 
+.form_button:hover {
+    box-shadow: 0 0 7px rgba(33,33,33,.2); 
+  }
+
 .regi_title{
     text-align: center;
     font-weight: bolder;
     font-size: x-large;
+}
+
+.small_font {
+    opacity: 0.25;
+    font-weight: bold;
+    font-size: 1rem;
 }
