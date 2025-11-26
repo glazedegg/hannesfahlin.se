@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { describe, expect, test } from "bun:test";
 import { readFile } from "node:fs/promises";
+import { readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join, normalize } from "node:path";
 import { JSDOM } from "jsdom";
@@ -12,6 +13,17 @@ async function loadDom(relativePath: string) {
   const filePath = join(ROOT_DIR, relativePath);
   const html = await readFile(filePath, "utf8");
   return new JSDOM(html);
+}
+
+function listPlaceholderPages(relativeDir: string, filenamePattern: RegExp) {
+  try {
+    return readdirSync(join(ROOT_DIR, relativeDir))
+      .filter((entry) => filenamePattern.test(entry))
+      .map((entry) => `${relativeDir}/${entry}`)
+      .sort();
+  } catch (error) {
+    return [];
+  }
 }
 
 describe("landing page", () => {
@@ -101,17 +113,14 @@ describe("Swedish pages", () => {
 });
 
 describe("Blog placeholders", () => {
-  const englishPlaceholders = [
-    "en/blog/placeholder-1.html",
-    "en/blog/placeholder-2.html",
-    "en/blog/placeholder-3.html",
-  ];
-
-  const swedishPlaceholders = [
-    "sv/blogg/platshallare-1.html",
-    "sv/blogg/platshallare-2.html",
-    "sv/blogg/platshallare-3.html",
-  ];
+  const englishPlaceholders = listPlaceholderPages(
+    "en/blog",
+    /^placeholder-\d+\.html$/
+  );
+  const swedishPlaceholders = listPlaceholderPages(
+    "sv/blogg",
+    /^platshallare-\d+\.html$/
+  );
 
   for (const page of [...englishPlaceholders, ...swedishPlaceholders]) {
     test(`${page} marked as noindex`, async () => {

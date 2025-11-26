@@ -234,8 +234,14 @@ li + li {
 .card-footer {
   margin-top: 0.75rem;
   display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card-footer-tags {
+  display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .tag {
