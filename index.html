@@ -1,28 +1,42 @@
-<!DOCTYPE html>
+<!-- This landing page directs visitors to the preferred language version. -->
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hannes Fahlin</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K962V0E6Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-7K962V0E6Z');
-</script>
-<body>
-    <div class="container">
-        <h1>Hannes Fahlin</h1>
-        <p id="introduction">Hello, my name is Hannes Fahlin. I am currently pursuing a Bachelor of Informatics in Computer Science at the University of Skövde, expecting to graduate in June 2025.</p>
-        <p class="small_font">Read more:</p>
-        <a class="form_button" href="/eng-intro.html">English</a>
-        <a class="form_button" href="/sv-intro.html">Swedish</a>
-        <a class="form_button" href="/Hannes_Fahlin_Resume.pdf">Resume</a>
-    </div>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Modern personal site for Hannes Fahlin with Swedish and English content.">
+        <meta property="og:title" content="Hannes Fahlin">
+        <meta property="og:description" content="Choose English or Swedish to continue to Hannes Fahlin's site.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://hannesfahlin.se/">
+        <meta property="og:site_name" content="Hannes Fahlin">
+        <meta name="twitter:card" content="summary">
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+        <link rel="stylesheet" href="styles/site.css">
+        <script>
+            (function () {
+                try {
+                    var storedTheme = window.localStorage.getItem("hf-theme");
+                    if (storedTheme) {
+                        document.documentElement.dataset.theme = storedTheme;
+                    }
+                } catch (error) {
+                    /* ignoring theme retrieval issues */
+                }
+            })();
+        </script>
+        <title>Hannes Fahlin</title>
+    </head>
+    <body data-page="landing">
+        <main class="landing">
+            <h1>Welcome! Välkommen!</h1>
+            <p>Please select the language you would like to browse in. Your choice will be remembered on future visits.</p>
+            <div class="language-choices">
+                <a href="en/" data-choose-lang="en">English</a>
+                <a href="sv/" data-choose-lang="sv">Svenska</a>
+            </div>
+            <p class="note">You can switch languages at any time from within the site header.</p>
+        </main>
+        <script type="module" src="scripts/landing.js"></script>
+    </body>
 </html>

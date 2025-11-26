@@ -1,0 +1,4 @@
+# This file guides search engine crawling.
+User-agent: *
+Allow: /
+Sitemap: https://hannesfahlin.se/sitemap.xml

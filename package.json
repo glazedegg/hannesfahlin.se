@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build:scripts": "bunx tsc",
+    "test": "bun test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jsdom": "^27.2.0",
+    "typescript": "^5.9.3"
+  }
+}

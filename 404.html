@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, follow">
+    <title>Page not found · Hannes Fahlin</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="/styles/site.css">
+  </head>
+  <body data-page="not-found">
+    <main class="landing" data-404-root>
+      <h1 data-404-heading>404: We can’t find that page</h1>
+      <p data-404-description>The link might be out of date or misspelled. Choose where to go next:</p>
+      <div class="language-choices" data-404-links>
+        <a href="/">Return home</a>
+      </div>
+      <p class="note" data-404-note>
+        If you believe this page should exist, please let me know at
+        <a href="mailto:hannes.fahlin@gmail.com">hannes.fahlin@gmail.com</a>.
+      </p>
+      <p class="note" data-404-switch></p>
+    </main>
+    <script>
+      (function () {
+        const langKey = "hf-lang";
+        const fallbackLang = "en";
+        const translations = {
+          en: {
+            heading: "404: We can’t find that page",
+            description: "The link might be out of date or misspelled. Jump straight to one of these sections:",
+            note: "If you believe this page should exist, please let me know at",
+            noteEmailText: "hannes.fahlin@gmail.com",
+            switchText: "Prefer Swedish?",
+            switchHref: "/sv/",
+            switchLabel: "Go to the Swedish site",
+            links: [
+              { href: "/en/", label: "Home" },
+              { href: "/en/resume.html", label: "Resume" },
+              { href: "/en/projects.html", label: "Projects" },
+              { href: "/en/blog/", label: "Blog" },
+              { href: "/en/about.html", label: "About" }
+            ]
+          },
+          sv: {
+            heading: "404: Vi hittar inte sidan",
+            description: "Länken kan vara gammal eller felstavad. Gå direkt vidare till:",
+            note: "Hör gärna av dig om du tycker att sidan borde finnas:",
+            noteEmailText: "hannes.fahlin@gmail.com",
+            switchText: "Vill du se den engelska sidan?",
+            switchHref: "/en/",
+            switchLabel: "Gå till den engelska versionen",
+            links: [
+              { href: "/sv/", label: "Start" },
+              { href: "/sv/cv.html", label: "CV" },
+              { href: "/sv/projekt.html", label: "Projekt" },
+              { href: "/sv/blogg/", label: "Blogg" },
+              { href: "/sv/om.html", label: "Om" }
+            ]
+          }
+        };
+
+        const resolveLanguage = () => {
+          let stored = null;
+          try {
+            stored = window.localStorage.getItem(langKey);
+          } catch (error) {
+            stored = null;
+          }
+          return stored && translations[stored] ? stored : fallbackLang;
+        };
+
+        const language = resolveLanguage();
+        const content = translations[language];
+
+        document.documentElement.lang = language;
+
+        const heading = document.querySelector("[data-404-heading]");
+        const description = document.querySelector("[data-404-description]");
+        const note = document.querySelector("[data-404-note]");
+        const linksContainer = document.querySelector("[data-404-links]");
+        const switchPara = document.querySelector("[data-404-switch]");
+
+        if (heading) heading.textContent = content.heading;
+        if (description) description.textContent = content.description;
+
+        if (linksContainer) {
+          linksContainer.innerHTML = "";
+          content.links.forEach(({ href, label }) => {
+            const link = document.createElement("a");
+            link.href = href;
+            link.textContent = label;
+            linksContainer.append(link);
+          });
+        }
+
+        if (note) {
+          note.innerHTML = "";
+          note.append(document.createTextNode(`${content.note} `));
+          const emailLink = document.createElement("a");
+          emailLink.href = "mailto:hannes.fahlin@gmail.com";
+          emailLink.textContent = content.noteEmailText;
+          note.append(emailLink);
+          note.append(document.createTextNode("."));
+        }
+
+        if (switchPara) {
+          switchPara.innerHTML = "";
+          const switchText = document.createTextNode(`${content.switchText} `);
+          const switchLink = document.createElement("a");
+          switchLink.href = content.switchHref;
+          switchLink.textContent = content.switchLabel;
+          switchPara.append(switchText, switchLink);
+        }
+      })();
+    </script>
+  </body>
+</html>

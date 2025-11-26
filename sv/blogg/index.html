@@ -1,0 +1,110 @@
+<!-- Denna sida listar svenska blogginlägg. -->
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Blogginlägg av Hannes Fahlin om backend, verktyg och lärdomar.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hannesfahlin.se/sv/blogg/">
+    <link rel="alternate" hreflang="sv" href="https://hannesfahlin.se/sv/blogg/">
+    <link rel="alternate" hreflang="en" href="https://hannesfahlin.se/en/blog/">
+    <link rel="alternate" hreflang="x-default" href="https://hannesfahlin.se/">
+    <meta property="og:title" content="Blogg · Hannes Fahlin">
+    <meta property="og:description" content="Texter om pragmatisk mjukvaruutveckling, verktyg och lärande.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hannesfahlin.se/sv/blogg/">
+    <meta property="og:site_name" content="Hannes Fahlin">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="../../styles/site.css">
+    <script>
+      (function () {
+        try {
+          var storedTheme = window.localStorage.getItem("hf-theme");
+          if (storedTheme) {
+            document.documentElement.dataset.theme = storedTheme;
+          }
+        } catch (error) {
+          /* ignoring theme retrieval issues */
+        }
+      })();
+    </script>
+    <title>Blogg · Hannes Fahlin</title>
+  </head>
+  <body data-page="blog">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../">Hannes Fahlin</a>
+        <nav class="site-nav">
+          <a href="../" data-nav-item="home">Start</a>
+          <a href="../cv.html" data-nav-item="resume">CV</a>
+          <a href="../projekt.html" data-nav-item="projects">Projekt</a>
+          <a href="./" data-nav-item="blog">Blogg</a>
+          <a href="../om.html" data-nav-item="about">Om</a>
+        </nav>
+        <div class="header-actions">
+          <button type="button" class="theme-toggle" data-theme-toggle>Aktivera mörkt läge</button>
+          <a class="lang-toggle" href="../../en/blog/" data-lang-toggle data-lang-code="en">English</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <div>
+            <h1 class="hero-title">Blogg</h1>
+            <p class="hero-subtitle">Tekniska anteckningar, guider och reflektioner. Inläggen skrivs först i Markdown och publiceras som lätt HTML.</p>
+            <div class="hero-actions">
+              <a class="button-primary" href="mailto:hannes.fahlin@gmail.com">Önska ett ämne</a>
+              <a class="button-ghost" href="https://github.com/glazedegg/" rel="noopener">Följ på GitHub</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="poster">
+        <div class="section-heading">
+          <h2>Senaste inlägg</h2>
+          <p>Byt ut dessa platshållare mot riktiga artiklar när de publiceras.</p>
+        </div>
+        <ul class="article-list">
+          <li>
+            <h3><a href="platshallare-1.html">Platshållarinlägg 1</a></h3>
+            <div class="article-meta">
+              <span>Platshållardatum</span>
+              <span>Ämne A</span>
+            </div>
+            <p>Första platshållaren för blogginlägg. Uppdatera länk och text när ett riktigt inlägg finns.</p>
+          </li>
+          <li>
+            <h3><a href="platshallare-2.html">Platshållarinlägg 2</a></h3>
+            <div class="article-meta">
+              <span>Platshållardatum</span>
+              <span>Ämne B</span>
+            </div>
+            <p>Behåll detta som den andra platshållaren. Ersätt allt när innehållet är klart.</p>
+          </li>
+          <li>
+            <h3><a href="platshallare-3.html">Platshållarinlägg 3</a></h3>
+            <div class="article-meta">
+              <span>Platshållardatum</span>
+              <span>Ämne C</span>
+            </div>
+            <p>Den tredje platshållaren. När ett inlägg finns ersätter du sammanfattningen och metadata.</p>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-inner">
+        <span>© <span data-current-year></span> Hannes Fahlin</span>
+        <div class="footer-links">
+          <a href="mailto:hannes.fahlin@gmail.com">E-post</a>
+          <a href="https://github.com/glazedegg/" rel="noopener">GitHub</a>
+          <a href="../../Hannes_Fahlin_Resume.pdf">Ladda ner PDF-CV</a>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="../../scripts/site.js"></script>
+  </body>
+</html>
