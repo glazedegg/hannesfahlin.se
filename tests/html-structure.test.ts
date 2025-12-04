@@ -173,7 +173,7 @@ describe("Universal blog landing pages", () => {
       
         const shareButton = document.querySelector<HTMLButtonElement>('[data-share-url]');
         expect(shareButton, `${entry.slug} missing share button`).toBeTruthy();
-        expect(shareButton?.getAttribute("data-share-url")).toBe(`/blog/${entry.slug}/`);
+        expect(shareButton?.getAttribute("data-share-url")).toBe("./");
     }
   });
 });

@@ -42,8 +42,8 @@ const buildHtml = (entry) => {
   const swedishUrl = `${SITE_ORIGIN}/${paths.sv}`;
 
   const targets = {
-    en: `/${paths.en}`,
-    sv: `/${paths.sv}`,
+    en: `../../${paths.en}`,
+    sv: `../../${paths.sv}`,
   };
 
   const script = `(() => {
@@ -118,14 +118,14 @@ const buildHtml = (entry) => {
       <p>${escapeHtml(enDescription)}</p>
       <p>${escapeHtml(svDescription)}</p>
       <div class="language-choices">
-        <a href="/${paths.en}" data-choose-lang="en">Read in English</a>
-        <a href="/${paths.sv}" data-choose-lang="sv">Läs på svenska</a>
+        <a href="../../${paths.en}" data-choose-lang="en">Read in English</a>
+        <a href="../../${paths.sv}" data-choose-lang="sv">Läs på svenska</a>
       </div>
       <div class="share-actions">
         <button
           type="button"
           class="button-ghost"
-          data-share-url="/blog/${slug}/"
+          data-share-url="./"
           data-share-title="${escapeHtml(shareTitle)}"
           data-share-text="${escapeHtml(shareText)}"
           data-share-copied-label="Link copied!"
