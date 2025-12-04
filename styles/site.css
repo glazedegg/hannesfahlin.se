@@ -300,6 +300,13 @@ li + li {
   content: " · ";
 }
 
+.article-nav {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 .language-choices {
   display: flex;
   flex-wrap: wrap;
@@ -321,6 +328,17 @@ li + li {
 .language-choices a:focus-visible {
   border-color: var(--color-accent);
   color: var(--color-accent);
+}
+
+.share-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.share-actions .button-ghost {
+  min-width: 12rem;
 }
 
 .note {

@@ -53,6 +53,7 @@ const yearSlot = document.querySelector<HTMLElement>("[data-current-year]");
 const prefersDark = window.matchMedia
   ? window.matchMedia("(prefers-color-scheme: dark)")
   : null;
+const shareButtons = document.querySelectorAll<HTMLButtonElement>("[data-share-url]");
 
 const currentLabels = labels[currentLang] ?? labels.en;
 
@@ -138,6 +139,42 @@ if (body && body.dataset.page) {
 
 if (yearSlot) {
   yearSlot.textContent = new Date().getFullYear().toString();
+}
+
+const normalizeShareUrl = (value: string | undefined | null): string => {
+  const fallback = window.location.href;
+  if (!value) {
+    return fallback;
+  }
+  try {
+    return new URL(value, window.location.href).toString();
+  } catch (error) {
+    console.warn("Unable to normalize share URL", value, error);
+    return fallback;
+  }
+};
+
+if (shareButtons.length > 0) {
+  shareButtons.forEach((button) => {
+    const shareUrl = normalizeShareUrl(button.dataset.shareUrl);
+    const shareTitle = button.dataset.shareTitle ?? document.title;
+    const shareText = button.dataset.shareText ?? "";
+
+    button.addEventListener("click", async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({ url: shareUrl, title: shareTitle, text: shareText });
+          return;
+        } catch (error) {
+          if (error instanceof DOMException && error.name === "AbortError") {
+            return;
+          }
+        }
+      }
+
+      window.prompt("Copy this link", shareUrl);
+    });
+  });
 }
 
 try {

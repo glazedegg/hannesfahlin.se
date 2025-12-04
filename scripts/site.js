@@ -40,6 +40,7 @@ const yearSlot = document.querySelector("[data-current-year]");
 const prefersDark = window.matchMedia
     ? window.matchMedia("(prefers-color-scheme: dark)")
     : null;
+const shareButtons = document.querySelectorAll("[data-share-url]");
 const currentLabels = (_a = labels[currentLang]) !== null && _a !== void 0 ? _a : labels.en;
 const applyTheme = (theme, persist = true) => {
     const normalized = theme === "dark" ? "dark" : "light";
@@ -117,6 +118,41 @@ if (body && body.dataset.page) {
 }
 if (yearSlot) {
     yearSlot.textContent = new Date().getFullYear().toString();
+}
+const normalizeShareUrl = (value) => {
+    const fallback = window.location.href;
+    if (!value) {
+        return fallback;
+    }
+    try {
+        return new URL(value, window.location.href).toString();
+    }
+    catch (error) {
+        console.warn("Unable to normalize share URL", value, error);
+        return fallback;
+    }
+};
+if (shareButtons.length > 0) {
+    shareButtons.forEach((button) => {
+        var _a, _b;
+        const shareUrl = normalizeShareUrl(button.dataset.shareUrl);
+        const shareTitle = (_a = button.dataset.shareTitle) !== null && _a !== void 0 ? _a : document.title;
+        const shareText = (_b = button.dataset.shareText) !== null && _b !== void 0 ? _b : "";
+        button.addEventListener("click", async () => {
+            if (navigator.share) {
+                try {
+                    await navigator.share({ url: shareUrl, title: shareTitle, text: shareText });
+                    return;
+                }
+                catch (error) {
+                    if (error instanceof DOMException && error.name === "AbortError") {
+                        return;
+                    }
+                }
+            }
+            window.prompt("Copy this link", shareUrl);
+        });
+    });
 }
 try {
     window.localStorage.setItem(langKey, currentLang);

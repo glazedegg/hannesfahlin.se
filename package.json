@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "build:scripts": "bunx tsc",
+    "build": "bun run build:scripts",
+    "build:scripts": "bunx tsc && bun run tools/generate-blog-landing-pages.js",
+    "generate:blog": "bun run tools/generate-blog-landing-pages.js",
     "test": "bun test"
   },
   "dependencies": {},

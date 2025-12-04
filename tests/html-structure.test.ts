@@ -15,6 +15,17 @@ async function loadDom(relativePath: string) {
   return new JSDOM(html);
 }
 
+async function loadBlogEntries() {
+  try {
+    const filePath = join(ROOT_DIR, "tools", "blog-entries.json");
+    const raw = await readFile(filePath, "utf8");
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    return [];
+  }
+}
+
 function listPlaceholderPages(relativeDir: string, filenamePattern: RegExp) {
   try {
     return readdirSync(join(ROOT_DIR, relativeDir))
@@ -138,4 +149,31 @@ describe("Blog placeholders", () => {
       expect(backLink, `${page} missing return link`).toBeTruthy();
     });
   }
+});
+
+describe("Universal blog landing pages", () => {
+  test("each landing page offers language choice", async () => {
+    const entries = await loadBlogEntries();
+    for (const entry of entries) {
+      const dom = await loadDom(`blog/${entry.slug}/index.html`);
+      const document = dom.window.document;
+
+      const robots = document.querySelector('meta[name="robots"]');
+      expect(robots, `${entry.slug} missing robots meta`).toBeTruthy();
+      expect(robots?.getAttribute("content")).toBe("noindex, follow");
+
+      const links = Array.from(
+        document.querySelectorAll<HTMLAnchorElement>('[data-choose-lang]')
+      );
+      expect(links.length, `${entry.slug} missing language links`).toBe(2);
+      const codes = links
+        .map((link) => link.getAttribute("data-choose-lang"))
+        .filter((code): code is string => typeof code === "string");
+      expect(codes.sort()).toEqual(["en", "sv"]);
+      
+        const shareButton = document.querySelector<HTMLButtonElement>('[data-share-url]');
+        expect(shareButton, `${entry.slug} missing share button`).toBeTruthy();
+        expect(shareButton?.getAttribute("data-share-url")).toBe(`/blog/${entry.slug}/`);
+    }
+  });
 });

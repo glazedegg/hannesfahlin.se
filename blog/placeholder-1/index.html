@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Choose English or Swedish to read Placeholder post 1.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://hannesfahlin.se/blog/placeholder-1/">
+    <link rel="alternate" hreflang="en" href="https://hannesfahlin.se/en/blog/placeholder-1.html">
+    <link rel="alternate" hreflang="sv" href="https://hannesfahlin.se/sv/blogg/platshallare-1.html">
+    <link rel="alternate" hreflang="x-default" href="https://hannesfahlin.se/blog/placeholder-1/">
+    <meta property="og:title" content="Placeholder post 1 · Hannes Fahlin">
+    <meta property="og:description" content="Choose English or Swedish to read Placeholder post 1.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hannesfahlin.se/blog/placeholder-1/">
+    <meta property="og:site_name" content="Hannes Fahlin">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="stylesheet" href="../../styles/site.css">
+    <script>
+      (function () {
+        try {
+          var storedTheme = window.localStorage.getItem('hf-theme');
+          if (storedTheme) {
+            document.documentElement.dataset.theme = storedTheme;
+          }
+        } catch (error) {
+          /* ignoring theme retrieval issues */
+        }
+      })();
+    </script>
+    <title>Placeholder post 1 · Hannes Fahlin</title>
+  </head>
+  <body data-page="blog-landing">
+    <main class="landing">
+      <h1>Placeholder post 1</h1>
+      <p>Choose English or Swedish to read Placeholder post 1.</p>
+      <p>Välj engelska eller svenska för att läsa Platshållarinlägg 1.</p>
+      <div class="language-choices">
+        <a href="/en/blog/placeholder-1.html" data-choose-lang="en">Read in English</a>
+        <a href="/sv/blogg/platshallare-1.html" data-choose-lang="sv">Läs på svenska</a>
+      </div>
+      <div class="share-actions">
+        <button
+          type="button"
+          class="button-ghost"
+          data-share-url="/blog/placeholder-1/"
+          data-share-title="Placeholder post 1 · Hannes Fahlin"
+          data-share-text="Choose English or Swedish to read Placeholder post 1."
+          data-share-copied-label="Link copied!"
+        >Share</button>
+      </div>
+      <p class="note">We will remember your choice for next time. Vi sparar ditt språkval.</p>
+    </main>
+    <script>(() => {
+  const langKey = "hf-lang";
+  const targets = {"en":"/en/blog/placeholder-1.html","sv":"/sv/blogg/platshallare-1.html"};
+  const hasTarget = (value) => typeof value === 'string' && Object.prototype.hasOwnProperty.call(targets, value);
+
+  let stored = null;
+  try {
+    stored = window.localStorage.getItem(langKey);
+  } catch (error) {
+    stored = null;
+  }
+
+  if (stored && hasTarget(stored)) {
+    window.location.replace(targets[stored]);
+    return;
+  }
+
+  const links = document.querySelectorAll('[data-choose-lang]');
+  links.forEach((link) => {
+    link.addEventListener('click', () => {
+      const langCode = link.dataset.chooseLang;
+      if (!hasTarget(langCode)) {
+        return;
+      }
+      try {
+        window.localStorage.setItem(langKey, langCode);
+      } catch (error) {
+        console.warn('Unable to persist language preference', error);
+      }
+    });
+  });
+})();</script>
+    <script type="module" src="../../scripts/site.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+[
+  {
+    "slug": "placeholder-1",
+    "title": {
+      "en": "Placeholder post 1",
+      "sv": "Platshållarinlägg 1"
+    },
+    "description": {
+      "en": "Choose English or Swedish to read Placeholder post 1.",
+      "sv": "Välj engelska eller svenska för att läsa Platshållarinlägg 1."
+    },
+    "paths": {
+      "en": "en/blog/placeholder-1.html",
+      "sv": "sv/blogg/platshallare-1.html"
+    }
+  }
+]
