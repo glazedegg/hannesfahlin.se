@@ -20,7 +20,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --color-bg: #10121a;
     --color-surface: #131623;
     --color-border: #2a2d3c;
